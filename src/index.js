@@ -5,7 +5,7 @@ const dotenv = require("dotenv");
 
 const fileUpload = require("express-fileupload");
 const auth = require("./middleware/auth");
-const user = require("./routes/user");
+const School = require("./routes/school");
 
 // api config
 dotenv.config();
@@ -47,11 +47,7 @@ app.get("/", (req, res) => {
   });
 });
 
-app.use("/", user);
-
-app.post("/welcome", auth, (req, res) => {
-  res.status(200).send("Welcome 🙌 ");
-});
+app.use("/", School);
 
 app.post("/upload", (req, res) => {
   console.log(req.files.foo);
